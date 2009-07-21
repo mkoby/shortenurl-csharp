@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 
 namespace ShortenURL
 {
-    internal class TinyURL : IShortenService
+    internal class Supr : IShortenService
     {
         private string _apiUrl;
 
-        public TinyURL()
+        public Supr()
         {
-            _apiUrl = "http://tinyurl.com/api-create.php";
+            _apiUrl = "http://su.pr/api";
         }
-        
+
         /// <summary>
         /// The API Url for the shortening service
         /// </summary>
@@ -31,10 +26,9 @@ namespace ShortenURL
         /// <returns></returns>
         public string ShortenURL(string LongURL)
         {
-            string Output = String.Empty;
-
-            Output = WebRequestHelper.MakeShortenRequest(
-                new Uri(String.Format("{0}?url={1}", _apiUrl, LongURL)));
+            String Output = String.Empty;
+            Uri uri = new Uri(String.Format("{0}?url={1}", _apiUrl, LongURL));
+            Output = WebRequestHelper.MakeShortenRequest(uri);
 
             return Output;
         }

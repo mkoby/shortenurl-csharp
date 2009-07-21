@@ -37,6 +37,7 @@
             this.contextMenuMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itemServiceList = new System.Windows.Forms.ToolStripMenuItem();
             this.itemIsgd = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemSupr = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTinyURL = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,6 +94,7 @@
             // 
             this.itemServiceList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemIsgd,
+            this.itemSupr,
             this.itemTinyURL});
             this.itemServiceList.Name = "itemServiceList";
             this.itemServiceList.Size = new System.Drawing.Size(152, 22);
@@ -103,14 +105,21 @@
             this.itemIsgd.Checked = true;
             this.itemIsgd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.itemIsgd.Name = "itemIsgd";
-            this.itemIsgd.Size = new System.Drawing.Size(152, 22);
+            this.itemIsgd.Size = new System.Drawing.Size(124, 22);
             this.itemIsgd.Text = "Is.gd";
             this.itemIsgd.Click += new System.EventHandler(this.itemIsgd_Click);
+            // 
+            // itemSupr
+            // 
+            this.itemSupr.Name = "itemSupr";
+            this.itemSupr.Size = new System.Drawing.Size(124, 22);
+            this.itemSupr.Text = "Su.pr";
+            this.itemSupr.Click += new System.EventHandler(this.itemSupr_Click);
             // 
             // itemTinyURL
             // 
             this.itemTinyURL.Name = "itemTinyURL";
-            this.itemTinyURL.Size = new System.Drawing.Size(152, 22);
+            this.itemTinyURL.Size = new System.Drawing.Size(124, 22);
             this.itemTinyURL.Text = "TinyURL";
             this.itemTinyURL.Click += new System.EventHandler(this.itemTinyURL_Click);
             // 
@@ -124,9 +133,11 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
+            this.AcceptButton = this.buttonShorten;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 155);
@@ -156,6 +167,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemIsgd;
         private System.Windows.Forms.ToolStripMenuItem itemTinyURL;
+        private System.Windows.Forms.ToolStripMenuItem itemSupr;
     }
 }
 

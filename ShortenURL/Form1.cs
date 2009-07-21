@@ -1,16 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ShortenURL
 {
     public partial class Form1 : Form
     {
+        #region Non-Form Methods
+
+        private IShortenService GetShortenService()
+        {
+            IShortenService Output = null;
+
+            if (itemTinyURL.Checked)
+                Output = new TinyURL();
+            else if (itemIsgd.Checked)
+            {
+                Output = new IsGd();
+            }
+            else if (itemSupr.Checked)
+            {
+                Output = new Supr();
+            }
+
+            return Output;
+        }
+
+        private ToolStripItemCollection GetServicesMenuItems()
+        {
+            ToolStripItemCollection Output = null;
+
+            for (int i = 0; i < contextMenuMain.Items.Count; i++)
+            {
+                ToolStripMenuItem currentItem = (ToolStripMenuItem)contextMenuMain.Items[i];
+
+                if (String.Equals(currentItem.Text, "Services", StringComparison.OrdinalIgnoreCase))
+                {
+                    Output = currentItem.DropDownItems;
+                    break;
+                }
+            }
+
+            return Output;
+        }
+
+        private void setServiceMenuItemCheck(ToolStripMenuItem item)
+        {
+            ToolStripItemCollection servicesList = GetServicesMenuItems();
+
+            if (servicesList != null && servicesList.Count > 0)
+                foreach (ToolStripMenuItem i in servicesList)
+                {
+                    i.Checked = i == item;
+                }
+        }
+
+        #endregion
+
         public Form1()
         {
             InitializeComponent();
@@ -34,30 +80,22 @@ namespace ShortenURL
             Clipboard.SetText(shortURL);
         }
 
-        private IShortenService GetShortenService()
-        {
-            IShortenService Output = null;
-
-            if (itemTinyURL.Checked)
-                Output = new TinyURL();
-            else if (itemIsgd.Checked)
-            {
-                Output = new IsGd();
-            }
-
-            return Output;
-        }
-
         private void itemTinyURL_Click(object sender, EventArgs e)
         {
-                itemIsgd.Checked = false;
-                itemTinyURL.Checked = true;
+            ToolStripMenuItem item = (ToolStripMenuItem) sender;
+            setServiceMenuItemCheck(item);
         }
 
         private void itemIsgd_Click(object sender, EventArgs e)
         {
-            itemTinyURL.Checked = false;
-            itemIsgd.Checked = true;
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
+        }
+
+        private void itemSupr_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -68,17 +106,22 @@ namespace ShortenURL
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(WindowState == FormWindowState.Normal)
+            if (WindowState == FormWindowState.Normal)
             {
                 Hide();
                 WindowState = FormWindowState.Minimized;
             }
-            else if(WindowState == FormWindowState.Minimized)
+            else if (WindowState == FormWindowState.Minimized)
             {
                 Show();
                 WindowState = FormWindowState.Normal;
             }
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

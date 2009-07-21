@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ShortenURL
 {
-    public class WebRequestHelper
+    internal class WebRequestHelper
     {
         public static string MakeShortenRequest(Uri Url)
         {

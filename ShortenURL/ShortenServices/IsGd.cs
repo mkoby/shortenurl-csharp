@@ -2,7 +2,7 @@ using System;
 
 namespace ShortenURL
 {
-    public class IsGd : IShortenService
+    internal class IsGd : IShortenService
     {
         private string _apiUrl;
 
@@ -27,7 +27,6 @@ namespace ShortenURL
         public string ShortenURL(string LongURL)
         {
             string Output = String.Empty;
-
             Uri url = new Uri(String.Format("{0}?longurl={1}", _apiUrl, LongURL));
             Output = WebRequestHelper.MakeShortenRequest(url);
 
