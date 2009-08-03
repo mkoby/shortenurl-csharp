@@ -41,6 +41,7 @@
             this.itemTinyURL = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemTrim = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +96,8 @@
             this.itemServiceList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemIsgd,
             this.itemSupr,
-            this.itemTinyURL});
+            this.itemTinyURL,
+            this.itemTrim});
             this.itemServiceList.Name = "itemServiceList";
             this.itemServiceList.Size = new System.Drawing.Size(152, 22);
             this.itemServiceList.Text = "Services";
@@ -105,21 +107,21 @@
             this.itemIsgd.Checked = true;
             this.itemIsgd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.itemIsgd.Name = "itemIsgd";
-            this.itemIsgd.Size = new System.Drawing.Size(124, 22);
+            this.itemIsgd.Size = new System.Drawing.Size(152, 22);
             this.itemIsgd.Text = "Is.gd";
             this.itemIsgd.Click += new System.EventHandler(this.itemIsgd_Click);
             // 
             // itemSupr
             // 
             this.itemSupr.Name = "itemSupr";
-            this.itemSupr.Size = new System.Drawing.Size(124, 22);
+            this.itemSupr.Size = new System.Drawing.Size(152, 22);
             this.itemSupr.Text = "Su.pr";
             this.itemSupr.Click += new System.EventHandler(this.itemSupr_Click);
             // 
             // itemTinyURL
             // 
             this.itemTinyURL.Name = "itemTinyURL";
-            this.itemTinyURL.Size = new System.Drawing.Size(124, 22);
+            this.itemTinyURL.Size = new System.Drawing.Size(152, 22);
             this.itemTinyURL.Text = "TinyURL";
             this.itemTinyURL.Click += new System.EventHandler(this.itemTinyURL_Click);
             // 
@@ -134,6 +136,13 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // itemTrim
+            // 
+            this.itemTrim.Name = "itemTrim";
+            this.itemTrim.Size = new System.Drawing.Size(152, 22);
+            this.itemTrim.Text = "tr.im";
+            this.itemTrim.Click += new System.EventHandler(this.itemTrim_Click);
             // 
             // Form1
             // 
@@ -168,6 +177,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemIsgd;
         private System.Windows.Forms.ToolStripMenuItem itemTinyURL;
         private System.Windows.Forms.ToolStripMenuItem itemSupr;
+        private System.Windows.Forms.ToolStripMenuItem itemTrim;
     }
 }
 

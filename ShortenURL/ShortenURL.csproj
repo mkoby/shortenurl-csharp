@@ -81,6 +81,7 @@
     <Compile Include="ShortenServices\IsGd.cs" />
     <Compile Include="ShortenServices\Supr.cs" />
     <Compile Include="ShortenServices\TinyURL.cs" />
+    <Compile Include="ShortenServices\TrIm.cs" />
     <Compile Include="ShortenServices\WebRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>

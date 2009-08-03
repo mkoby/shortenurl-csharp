@@ -22,6 +22,10 @@ namespace ShortenURL
             {
                 Output = new Supr();
             }
+            else if (itemTrim.Checked)
+            {
+                Output = new TrIm();
+            }
 
             return Output;
         }
@@ -95,6 +99,12 @@ namespace ShortenURL
         private void itemSupr_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
+        }
+
+        private void itemTrim_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem) sender;
             setServiceMenuItemCheck(item);
         }
 
