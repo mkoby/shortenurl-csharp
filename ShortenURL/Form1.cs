@@ -22,10 +22,6 @@ namespace ShortenURL
             {
                 Output = new Supr();
             }
-            else if (itemTrim.Checked)
-            {
-                Output = new TrIm();
-            }
 
             return Output;
         }
