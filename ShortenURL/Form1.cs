@@ -22,6 +22,10 @@ namespace ShortenURL
             {
                 Output = new Supr();
             }
+            else if (itembitly.Checked)
+            {
+                Output = new bitly();
+            }
 
             return Output;
         }
@@ -98,9 +102,9 @@ namespace ShortenURL
             setServiceMenuItemCheck(item);
         }
 
-        private void itemTrim_Click(object sender, EventArgs e)
+        private void itembitly_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem) sender;
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
             setServiceMenuItemCheck(item);
         }
 

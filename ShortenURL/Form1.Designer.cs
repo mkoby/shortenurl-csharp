@@ -41,6 +41,7 @@
             this.itemTinyURL = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itembitly = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +94,7 @@
             // itemServiceList
             // 
             this.itemServiceList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itembitly,
             this.itemIsgd,
             this.itemSupr,
             this.itemTinyURL});
@@ -135,6 +137,13 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // itembitly
+            // 
+            this.itembitly.Name = "itembitly";
+            this.itembitly.Size = new System.Drawing.Size(152, 22);
+            this.itembitly.Text = "bit.ly";
+            this.itembitly.Click += new System.EventHandler(this.itembitly_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.buttonShorten;
@@ -168,6 +177,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemIsgd;
         private System.Windows.Forms.ToolStripMenuItem itemTinyURL;
         private System.Windows.Forms.ToolStripMenuItem itemSupr;
+        private System.Windows.Forms.ToolStripMenuItem itembitly;
     }
 }
 
