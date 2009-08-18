@@ -36,12 +36,13 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itemServiceList = new System.Windows.Forms.ToolStripMenuItem();
+            this.itembitly = new System.Windows.Forms.ToolStripMenuItem();
             this.itemIsgd = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSupr = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTinyURL = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itembitly = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemTrim = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,10 +98,18 @@
             this.itembitly,
             this.itemIsgd,
             this.itemSupr,
-            this.itemTinyURL});
+            this.itemTinyURL,
+            this.itemTrim});
             this.itemServiceList.Name = "itemServiceList";
             this.itemServiceList.Size = new System.Drawing.Size(152, 22);
             this.itemServiceList.Text = "Services";
+            // 
+            // itembitly
+            // 
+            this.itembitly.Name = "itembitly";
+            this.itembitly.Size = new System.Drawing.Size(152, 22);
+            this.itembitly.Text = "bit.ly";
+            this.itembitly.Click += new System.EventHandler(this.itembitly_Click);
             // 
             // itemIsgd
             // 
@@ -137,12 +146,12 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // itembitly
+            // itemTrim
             // 
-            this.itembitly.Name = "itembitly";
-            this.itembitly.Size = new System.Drawing.Size(152, 22);
-            this.itembitly.Text = "bit.ly";
-            this.itembitly.Click += new System.EventHandler(this.itembitly_Click);
+            this.itemTrim.Name = "itemTrim";
+            this.itemTrim.Size = new System.Drawing.Size(152, 22);
+            this.itemTrim.Text = "tr.im";
+            this.itemTrim.Click += new System.EventHandler(this.itemTrim_Click);
             // 
             // Form1
             // 
@@ -178,6 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem itemTinyURL;
         private System.Windows.Forms.ToolStripMenuItem itemSupr;
         private System.Windows.Forms.ToolStripMenuItem itembitly;
+        private System.Windows.Forms.ToolStripMenuItem itemTrim;
     }
 }
 

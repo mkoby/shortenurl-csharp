@@ -2,11 +2,11 @@ using System;
 
 namespace ShortenURL
 {
-    internal class IsGd : IShortenService
+    internal class isgd : IShortenService
     {
         private string _apiUrl;
 
-        public IsGd()
+        public isgd()
         {
             _apiUrl = "http://is.gd/api.php";
         }

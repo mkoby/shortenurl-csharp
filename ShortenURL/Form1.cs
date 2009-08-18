@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Windows.Forms;
 
 namespace ShortenURL
@@ -16,7 +17,7 @@ namespace ShortenURL
                 Output = new TinyURL();
             else if (itemIsgd.Checked)
             {
-                Output = new IsGd();
+                Output = new isgd();
             }
             else if (itemSupr.Checked)
             {
@@ -25,6 +26,10 @@ namespace ShortenURL
             else if (itembitly.Checked)
             {
                 Output = new bitly();
+            }
+            else if (itemTrim.Checked)
+            {
+                Output = new trim();
             }
 
             return Output;
@@ -70,10 +75,11 @@ namespace ShortenURL
         {
             IShortenService shortenService = GetShortenService();
             string shortURL = String.Empty;
+            string urlText = HttpUtility.UrlEncode(textURL.Text);
 
             try
             {
-                shortURL = shortenService.ShortenURL(textURL.Text);
+                shortURL = shortenService.ShortenURL(urlText);
             }
             catch (Exception exception)
             {
@@ -82,30 +88,6 @@ namespace ShortenURL
 
             textURL.Text = shortURL;
             Clipboard.SetText(shortURL);
-        }
-
-        private void itemTinyURL_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem) sender;
-            setServiceMenuItemCheck(item);
-        }
-
-        private void itemIsgd_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
-        }
-
-        private void itemSupr_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
-        }
-
-        private void itembitly_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -132,6 +114,36 @@ namespace ShortenURL
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void itemTinyURL_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
+        }
+
+        private void itemIsgd_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
+        }
+
+        private void itemSupr_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
+        }
+
+        private void itembitly_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
+        }
+
+        private void itemTrim_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            setServiceMenuItemCheck(item);
         }
     }
 }
