@@ -40,9 +40,9 @@
             this.itemIsgd = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSupr = new System.Windows.Forms.ToolStripMenuItem();
             this.itemTinyURL = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemTrim = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemTrim = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +90,7 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.contextMenuMain.Name = "contextMenuMain";
-            this.contextMenuMain.Size = new System.Drawing.Size(153, 76);
+            this.contextMenuMain.Size = new System.Drawing.Size(117, 54);
             // 
             // itemServiceList
             // 
@@ -103,36 +103,40 @@
             this.itemServiceList.Name = "itemServiceList";
             this.itemServiceList.Size = new System.Drawing.Size(152, 22);
             this.itemServiceList.Text = "Services";
+            this.itemServiceList.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.itemServiceList_DropDownItemClicked);
             // 
             // itembitly
             // 
             this.itembitly.Name = "itembitly";
             this.itembitly.Size = new System.Drawing.Size(152, 22);
             this.itembitly.Text = "bit.ly";
-            this.itembitly.Click += new System.EventHandler(this.itembitly_Click);
             // 
             // itemIsgd
             // 
             this.itemIsgd.Checked = true;
             this.itemIsgd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.itemIsgd.Name = "itemIsgd";
+            this.itemIsgd.RightToLeftAutoMirrorImage = true;
             this.itemIsgd.Size = new System.Drawing.Size(152, 22);
-            this.itemIsgd.Text = "Is.gd";
-            this.itemIsgd.Click += new System.EventHandler(this.itemIsgd_Click);
+            this.itemIsgd.Text = "is.gd";
             // 
             // itemSupr
             // 
             this.itemSupr.Name = "itemSupr";
             this.itemSupr.Size = new System.Drawing.Size(152, 22);
             this.itemSupr.Text = "Su.pr";
-            this.itemSupr.Click += new System.EventHandler(this.itemSupr_Click);
             // 
             // itemTinyURL
             // 
             this.itemTinyURL.Name = "itemTinyURL";
             this.itemTinyURL.Size = new System.Drawing.Size(152, 22);
             this.itemTinyURL.Text = "TinyURL";
-            this.itemTinyURL.Click += new System.EventHandler(this.itemTinyURL_Click);
+            // 
+            // itemTrim
+            // 
+            this.itemTrim.Name = "itemTrim";
+            this.itemTrim.Size = new System.Drawing.Size(152, 22);
+            this.itemTrim.Text = "tr.im";
             // 
             // toolStripMenuItem1
             // 
@@ -146,19 +150,13 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // itemTrim
-            // 
-            this.itemTrim.Name = "itemTrim";
-            this.itemTrim.Size = new System.Drawing.Size(152, 22);
-            this.itemTrim.Text = "tr.im";
-            this.itemTrim.Click += new System.EventHandler(this.itemTrim_Click);
-            // 
             // Form1
             // 
             this.AcceptButton = this.buttonShorten;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 155);
+            this.ContextMenuStrip = this.contextMenuMain;
             this.Controls.Add(this.buttonShorten);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textURL);

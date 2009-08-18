@@ -7,11 +7,11 @@ namespace ShortenURL
 {
     internal class WebRequestHelper
     {
-        public static string MakeShortenRequest(Uri Url)
+        public static string MakeShortenRequest(Uri url)
         {
             StringBuilder Output = new StringBuilder();
 
-            WebRequest shortenRequest = WebRequest.Create(Url);
+            WebRequest shortenRequest = WebRequest.Create(url);
             shortenRequest.Method = "GET";
             WebResponse shortenResponse = null;
             StreamReader responseReader = null;
@@ -22,7 +22,7 @@ namespace ShortenURL
             }
             catch (WebException webex)
             {
-                throw webex;
+                throw new Exception(webex.Message, webex);
             }
 
             if (shortenResponse != null)

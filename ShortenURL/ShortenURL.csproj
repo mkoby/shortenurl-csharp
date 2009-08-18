@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Controller.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +82,7 @@
     </Compile>
     <Compile Include="ShortenServices\bitly.cs" />
     <Compile Include="ShortenServices\isgd.cs" />
+    <Compile Include="ShortenServices\ShortenServiceFactory.cs" />
     <Compile Include="ShortenServices\Supr.cs" />
     <Compile Include="ShortenServices\TinyURL.cs" />
     <Compile Include="ShortenServices\trim.cs" />

@@ -1,114 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Windows.Forms;
 
 namespace ShortenURL
 {
     public partial class Form1 : Form
     {
-        #region Non-Form Methods
-
-        private IShortenService GetShortenService()
-        {
-            IShortenService Output = null;
-
-            if (itemTinyURL.Checked)
-                Output = new TinyURL();
-            else if (itemIsgd.Checked)
-            {
-                Output = new isgd();
-            }
-            else if (itemSupr.Checked)
-            {
-                Output = new Supr();
-            }
-            else if (itembitly.Checked)
-            {
-                Output = new bitly();
-            }
-            else if (itemTrim.Checked)
-            {
-                Output = new trim();
-            }
-
-            return Output;
-        }
-
-        private ToolStripItemCollection GetServicesMenuItems()
-        {
-            ToolStripItemCollection Output = null;
-
-            for (int i = 0; i < contextMenuMain.Items.Count; i++)
-            {
-                ToolStripMenuItem currentItem = (ToolStripMenuItem)contextMenuMain.Items[i];
-
-                if (String.Equals(currentItem.Text, "Services", StringComparison.OrdinalIgnoreCase))
-                {
-                    Output = currentItem.DropDownItems;
-                    break;
-                }
-            }
-
-            return Output;
-        }
-
-        private void setServiceMenuItemCheck(ToolStripMenuItem item)
-        {
-            ToolStripItemCollection servicesList = GetServicesMenuItems();
-
-            if (servicesList != null && servicesList.Count > 0)
-                foreach (ToolStripMenuItem i in servicesList)
-                {
-                    i.Checked = i == item;
-                }
-        }
-
-        #endregion
+        private readonly Controller _controller;
 
         public Form1()
         {
             InitializeComponent();
+            _controller = new Controller(this);
         }
 
         private void buttonShorten_Click(object sender, EventArgs e)
         {
-            IShortenService shortenService = GetShortenService();
-            string shortURL = String.Empty;
-            string urlText = HttpUtility.UrlEncode(textURL.Text);
-
-            try
-            {
-                shortURL = shortenService.ShortenURL(urlText);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            textURL.Text = shortURL;
-            Clipboard.SetText(shortURL);
+            _controller.ShortenButtonClicked();
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (FormWindowState.Minimized == WindowState)
-                Hide();
+            _controller.WindowStateChanged(Controller.WindowStateChangeAction.FormResize);
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                Hide();
-                WindowState = FormWindowState.Minimized;
-            }
-            else if (WindowState == FormWindowState.Minimized)
-            {
-                Show();
-                WindowState = FormWindowState.Normal;
-            }
-
+            _controller.WindowStateChanged(Controller.WindowStateChangeAction.NotifyIconDoubleClick);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,34 +33,9 @@ namespace ShortenURL
             Application.Exit();
         }
 
-        private void itemTinyURL_Click(object sender, EventArgs e)
+        private void itemServiceList_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
-        }
-
-        private void itemIsgd_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
-        }
-
-        private void itemSupr_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
-        }
-
-        private void itembitly_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
-        }
-
-        private void itemTrim_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            setServiceMenuItemCheck(item);
+            _controller.PerferredServiceChanged(e.ClickedItem);
         }
     }
 }
